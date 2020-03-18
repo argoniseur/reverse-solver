@@ -12,7 +12,7 @@
 using namespace std;
 
 
-Attacks::Attacks(VarMap *vm) : varMap(*vm) {
+Attacks::Attacks(VarMapP *vm) : varMap(*vm) {
   nbAttacks = 0;
   nMaxAttacks = 0;
 }
@@ -24,8 +24,8 @@ void Attacks::addAttack(string from, string to) {
   attacks[toVar].push_back(fromVar);
   ++nbAttacks;
   if (attacks[toVar].size() > nMaxAttacks) nMaxAttacks = attacks[toVar].size();
-  if(!from.compare(to))
-    varMap.setSelfAttacking(from,true);
+  //if(!from.compare(to))
+    //varMap.setSelfAttacking(from,true);
 }
 
 vector<int> *Attacks::getAttacksTo(int var) {

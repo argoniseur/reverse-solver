@@ -14,7 +14,7 @@
 #include <string>
 #include <iostream>
 
-#include "VarMap.h"
+#include "VarMapP.h"
 
 using namespace std;
 
@@ -30,7 +30,7 @@ class Attacks {
    * \brief Constructor
    * \param vm : the variables concerned by the attack relation
    */
-  Attacks(VarMap *vm);
+  Attacks(VarMapP *vm);
 
   /**
    * \fn addAttack
@@ -64,7 +64,7 @@ class Attacks {
 
  protected :
   /** The variables on which is built the attack relation */
-  VarMap& varMap;
+  VarMapP& varMap;
 
   /** The mapping from the arguments to their attackers */
   map<int,vector<int> > attacks;

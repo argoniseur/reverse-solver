@@ -11,7 +11,7 @@
 #define __IPARSER_H__
 
 #include "Attacks.h"
-#include "VarMap.h"
+#include "VarMapP.h"
 
 using namespace std;
 
@@ -45,7 +45,7 @@ class IParser {
    * \brief Returns the mapping between the arguments and the literals
    * \return the mapping between the arguments and the literals
    */
-  virtual VarMap *getVarMap() = 0;
+  virtual VarMapP *getVarMap() = 0;
 
   virtual ~IParser(){}
 

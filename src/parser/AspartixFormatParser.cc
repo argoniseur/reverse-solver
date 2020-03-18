@@ -60,6 +60,6 @@ inline Attacks *AspartixFormatParser::getAttacks() {
 }
 
 
-VarMap *AspartixFormatParser::getVarMap() {
+VarMapP *AspartixFormatParser::getVarMap() {
   return &varMap;
 }

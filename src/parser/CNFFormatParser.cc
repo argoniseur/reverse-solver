@@ -42,6 +42,6 @@ inline Attacks *CNFFormatParser::getAttacks() {
 }
 
 
-VarMap *CNFFormatParser::getVarMap() {
+VarMapP *CNFFormatParser::getVarMap() {
   return &varMap;
 }

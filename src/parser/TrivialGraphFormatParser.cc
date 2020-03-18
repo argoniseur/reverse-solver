@@ -34,6 +34,6 @@ inline Attacks *TrivialGraphFormatParser::getAttacks() {
 }
 
 
-VarMap *TrivialGraphFormatParser::getVarMap() {
+VarMapP *TrivialGraphFormatParser::getVarMap() {
   return &varMap;
 }

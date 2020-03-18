@@ -15,7 +15,7 @@
 
 #include "IParser.h"
 #include "Attacks.h"
-#include "VarMap.h"
+#include "VarMapP.h"
 
 using namespace std;
 
@@ -41,11 +41,11 @@ class AspartixFormatParser : public IParser {
   virtual ~AspartixFormatParser(){}
   void parseInstance();
   Attacks *getAttacks();
-  VarMap *getVarMap();
+  VarMapP *getVarMap();
 
  private:
   Attacks attacks;  /*!< The attack relation corresponding to the parsed file  */
-  VarMap varMap; /**< The mapping between arguments names and literals */
+  VarMapP varMap; /**< The mapping between arguments names and literals */
   istream *is; /**< The stream to read the input AF */
 };
 
