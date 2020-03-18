@@ -100,7 +100,7 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am__dirstamp = $(am__leading_dot)dirstamp
 am__objects_1 = ./Main.$(OBJEXT)
-am__objects_2 = ./specs/VarMap.$(OBJEXT) ./specs/Attacks.$(OBJEXT)
+am__objects_2 = ./specs/VarMapP.$(OBJEXT) ./specs/Attacks.$(OBJEXT)
 am__objects_3 = ./parser/AspartixFormatParser.$(OBJEXT) \
 	./parser/CNFFormatParser.$(OBJEXT) \
 	./parser/TrivialGraphFormatParser.$(OBJEXT)
@@ -253,7 +253,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AM_CPPFLAGS = -g -Wall -Wno-parentheses -Werror -I$(srcdir)/specs -I$(srcdir)/parser
-specsDirSources = ./specs/VarMap.cc ./specs/Attacks.cc
+specsDirSources = ./specs/VarMapP.cc ./specs/Attacks.cc
 parserDirSources = ./parser/AspartixFormatParser.cc ./parser/CNFFormatParser.cc ./parser/TrivialGraphFormatParser.cc
 srcDirSources = ./Main.cc
 ReverseSolver_SOURCES = $(srcDirSources) $(specsDirSources) $(parserDirSources)
@@ -345,7 +345,7 @@ specs/$(am__dirstamp):
 specs/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) ./specs/$(DEPDIR)
 	@: > specs/$(DEPDIR)/$(am__dirstamp)
-./specs/VarMap.$(OBJEXT): specs/$(am__dirstamp) \
+./specs/VarMapP.$(OBJEXT): specs/$(am__dirstamp) \
 	specs/$(DEPDIR)/$(am__dirstamp)
 ./specs/Attacks.$(OBJEXT): specs/$(am__dirstamp) \
 	specs/$(DEPDIR)/$(am__dirstamp)
@@ -380,7 +380,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./parser/$(DEPDIR)/CNFFormatParser.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./parser/$(DEPDIR)/TrivialGraphFormatParser.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./specs/$(DEPDIR)/Attacks.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./specs/$(DEPDIR)/VarMap.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./specs/$(DEPDIR)/VarMapP.Po@am__quote@
 
 .cc.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
