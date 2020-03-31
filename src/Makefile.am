@@ -9,3 +9,4 @@ srcDirSources = ./Main.cc
 bin_PROGRAMS = ReverseSolver
 ReverseSolver_SOURCES = $(srcDirSources) $(specsDirSources) $(parserDirSources)
 #CoQuiAAS_LDFLAGS =-lpthread
+ReverseSolver_LDFLAGS = -l$(srcdir)/resources/open-wbo-master/lib.a
