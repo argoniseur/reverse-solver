@@ -1,11 +1,10 @@
 #include "IParser.h"
 #include "ParserFactory.h"
+#include "MaxSATSolver.h"
 
 using namespace std;
 
 int main(int argc, char** argv){
-
-  cout << "Ces fdp de marseillais de con" << endl;
 
   cout << "run unsat test ..." << endl;
   vector<int> lits;

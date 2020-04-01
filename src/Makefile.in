@@ -108,8 +108,6 @@ am_ReverseSolver_OBJECTS = $(am__objects_1) $(am__objects_2) \
 	$(am__objects_3)
 ReverseSolver_OBJECTS = $(am_ReverseSolver_OBJECTS)
 ReverseSolver_LDADD = $(LDADD)
-ReverseSolver_LINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) \
-	$(ReverseSolver_LDFLAGS) $(LDFLAGS) -o $@
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -254,13 +252,13 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-AM_CPPFLAGS = -g -Wall -Wno-parentheses -Werror -I$(srcdir)/specs -I$(srcdir)/parser
+AM_CPPFLAGS = -g -Wall -Wno-parentheses -Werror -I$(srcdir)/specs -I$(srcdir)/parser -I$(smaxIncludeDirectory) -L$(smaxLibDirectory) -lsmax
 specsDirSources = ./specs/VarMapP.cc ./specs/Attacks.cc
 parserDirSources = ./parser/AspartixFormatParser.cc ./parser/CNFFormatParser.cc ./parser/TrivialGraphFormatParser.cc
 srcDirSources = ./Main.cc
+smaxLibDirectory = ../resources/smax-master/lib
+smaxIncludeDirectory = ../resources/smax-master/include
 ReverseSolver_SOURCES = $(srcDirSources) $(specsDirSources) $(parserDirSources)
-#CoQuiAAS_LDFLAGS =-lpthread
-ReverseSolver_LDFLAGS = -l$(srcdir)/resources/open-wbo-master/lib.a
 all: all-am
 
 .SUFFIXES:
@@ -368,7 +366,7 @@ parser/$(DEPDIR)/$(am__dirstamp):
 
 ReverseSolver$(EXEEXT): $(ReverseSolver_OBJECTS) $(ReverseSolver_DEPENDENCIES) $(EXTRA_ReverseSolver_DEPENDENCIES) 
 	@rm -f ReverseSolver$(EXEEXT)
-	$(AM_V_CXXLD)$(ReverseSolver_LINK) $(ReverseSolver_OBJECTS) $(ReverseSolver_LDADD) $(LIBS)
+	$(AM_V_CXXLD)$(CXXLINK) $(ReverseSolver_OBJECTS) $(ReverseSolver_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -614,6 +612,8 @@ uninstall-am: uninstall-binPROGRAMS
 
 .PRECIOUS: Makefile
 
+#CoQuiAAS_LDFLAGS =-lpthread
+#ReverseSolver_LDFLAGS = 
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
