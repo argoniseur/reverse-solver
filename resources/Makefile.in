@@ -388,7 +388,9 @@ uninstall-am:
 .PRECIOUS: Makefile
 
 all:
+	echo "$(CURDIR)/smax-master/lib"
 	export LD_LIBRARY_PATH="$(LD_LIBRARY_PATH):$(CURDIR)/smax-master/lib"
+	echo "$(LD_LIBRARY_PATH):$(CURDIR)/smax-master/lib"
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

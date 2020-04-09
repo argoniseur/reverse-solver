@@ -1,3 +1,3 @@
 AUTOMAKE_OPTIONS = foreign
 
-SUBDIRS = resources src
+SUBDIRS = src
