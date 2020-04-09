@@ -107,7 +107,7 @@ am__objects_3 = ./parser/AspartixFormatParser.$(OBJEXT) \
 am_ReverseSolver_OBJECTS = $(am__objects_1) $(am__objects_2) \
 	$(am__objects_3)
 ReverseSolver_OBJECTS = $(am_ReverseSolver_OBJECTS)
-ReverseSolver_LDADD = $(LDADD)
+ReverseSolver_DEPENDENCIES = $(smaxLibDirectory)/libsmax.so
 ReverseSolver_LINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) \
 	$(ReverseSolver_LDFLAGS) $(LDFLAGS) -o $@
 AM_V_P = $(am__v_P_@AM_V@)
@@ -263,6 +263,7 @@ smaxIncludeDirectory = ../resources/smax-master/include
 ReverseSolver_SOURCES = $(srcDirSources) $(specsDirSources) $(parserDirSources)
 #CoQuiAAS_LDFLAGS =-lpthread
 ReverseSolver_LDFLAGS = -L$(smaxLibDirectory) -lsmax -lz -lgmp -O0
+ReverseSolver_LDADD = $(smaxLibDirectory)/libsmax.so
 all: all-am
 
 .SUFFIXES:

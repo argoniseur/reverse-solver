@@ -11,3 +11,4 @@ bin_PROGRAMS = ReverseSolver
 ReverseSolver_SOURCES = $(srcDirSources) $(specsDirSources) $(parserDirSources)
 #CoQuiAAS_LDFLAGS =-lpthread
 ReverseSolver_LDFLAGS = -L$(smaxLibDirectory) -lsmax -lz -lgmp -O0
+ReverseSolver_LDADD = $(smaxLibDirectory)/libsmax.so

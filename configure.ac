@@ -6,6 +6,6 @@ AC_PROG_RANLIB
 AC_LANG(C++)
 AC_PROG_CXX
 AC_SUBST([CC])
-AC_CONFIG_FILES([Makefile src/Makefile resources/Makefile])
+AC_CONFIG_FILES([Makefile src/Makefile])
 
 AC_OUTPUT
