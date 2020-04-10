@@ -7,7 +7,7 @@ then
 fi
 
 oldLDPath=$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:`pwd`/resources/smax-master/lib"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:`pwd`/resources/smax/lib"
 
 ./src/ReverseSolver "$*"
 

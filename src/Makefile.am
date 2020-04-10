@@ -4,8 +4,8 @@ AM_CPPFLAGS = -g -std=c++11 -Wall -Wno-parentheses -Werror -I$(srcdir)/specs -I$
 specsDirSources = ./specs/VarMapP.cc ./specs/Attacks.cc
 parserDirSources = ./parser/AspartixFormatParser.cc ./parser/CNFFormatParser.cc ./parser/TrivialGraphFormatParser.cc
 srcDirSources = ./Main.cc
-smaxLibDirectory = ../resources/smax-master/lib
-smaxIncludeDirectory = ../resources/smax-master/include
+smaxLibDirectory = ../resources/smax/lib
+smaxIncludeDirectory = ../resources/smax/include
 
 bin_PROGRAMS = ReverseSolver
 ReverseSolver_SOURCES = $(srcDirSources) $(specsDirSources) $(parserDirSources)
