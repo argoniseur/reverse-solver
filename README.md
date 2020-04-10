@@ -1,4 +1,5 @@
 # Reverse-solver
+(Run with automake 1.15.1)
 
   - run the configure file
   - run the make command
