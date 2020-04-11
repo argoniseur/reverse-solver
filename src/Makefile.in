@@ -100,12 +100,15 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am__dirstamp = $(am__leading_dot)dirstamp
 am__objects_1 = ./Main.$(OBJEXT)
-am__objects_2 = ./specs/VarMapP.$(OBJEXT) ./specs/Attacks.$(OBJEXT)
+am__objects_2 = ./specs/VarMapP.$(OBJEXT) ./specs/Attacks.$(OBJEXT) \
+	./specs/Accepted.$(OBJEXT) ./specs/Defeated.$(OBJEXT) \
+	./specs/VarMapAtt.$(OBJEXT) ./specs/VarMapDet.$(OBJEXT)
 am__objects_3 = ./parser/AspartixFormatParser.$(OBJEXT) \
 	./parser/CNFFormatParser.$(OBJEXT) \
 	./parser/TrivialGraphFormatParser.$(OBJEXT)
+am__objects_4 = ./solver/compute_formula_stable.$(OBJEXT)
 am_ReverseSolver_OBJECTS = $(am__objects_1) $(am__objects_2) \
-	$(am__objects_3)
+	$(am__objects_3) $(am__objects_4)
 ReverseSolver_OBJECTS = $(am_ReverseSolver_OBJECTS)
 ReverseSolver_DEPENDENCIES = $(smaxLibDirectory)/libsmax.so
 ReverseSolver_LINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) \
@@ -254,13 +257,14 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-AM_CPPFLAGS = -g -std=c++11 -Wall -Wno-parentheses -Werror -I$(srcdir)/specs -I$(srcdir)/parser -I$(smaxIncludeDirectory)
-specsDirSources = ./specs/VarMapP.cc ./specs/Attacks.cc
+AM_CPPFLAGS = -g -std=c++11 -Wall -Wno-parentheses -Werror -I$(srcdir)/specs -I$(srcdir)/parser -I$(smaxIncludeDirectory) -I$(srcdir)/solver
+specsDirSources = ./specs/VarMapP.cc ./specs/Attacks.cc ./specs/Accepted.cc ./specs/Defeated.cc ./specs/VarMapAtt.cc ./specs/VarMapDet.cc
 parserDirSources = ./parser/AspartixFormatParser.cc ./parser/CNFFormatParser.cc ./parser/TrivialGraphFormatParser.cc
+solverDirSources = ./solver/compute_formula_stable.cc
 srcDirSources = ./Main.cc
-smaxLibDirectory = ../resources/smax-master/lib
-smaxIncludeDirectory = ../resources/smax-master/include
-ReverseSolver_SOURCES = $(srcDirSources) $(specsDirSources) $(parserDirSources)
+smaxLibDirectory = ../resources/smax/lib
+smaxIncludeDirectory = ../resources/smax/include
+ReverseSolver_SOURCES = $(srcDirSources) $(specsDirSources) $(parserDirSources) $(solverDirSources)
 #CoQuiAAS_LDFLAGS =-lpthread
 ReverseSolver_LDFLAGS = -L$(smaxLibDirectory) -lsmax -lz -lgmp -O0
 ReverseSolver_LDADD = $(smaxLibDirectory)/libsmax.so
@@ -356,6 +360,14 @@ specs/$(DEPDIR)/$(am__dirstamp):
 	specs/$(DEPDIR)/$(am__dirstamp)
 ./specs/Attacks.$(OBJEXT): specs/$(am__dirstamp) \
 	specs/$(DEPDIR)/$(am__dirstamp)
+./specs/Accepted.$(OBJEXT): specs/$(am__dirstamp) \
+	specs/$(DEPDIR)/$(am__dirstamp)
+./specs/Defeated.$(OBJEXT): specs/$(am__dirstamp) \
+	specs/$(DEPDIR)/$(am__dirstamp)
+./specs/VarMapAtt.$(OBJEXT): specs/$(am__dirstamp) \
+	specs/$(DEPDIR)/$(am__dirstamp)
+./specs/VarMapDet.$(OBJEXT): specs/$(am__dirstamp) \
+	specs/$(DEPDIR)/$(am__dirstamp)
 parser/$(am__dirstamp):
 	@$(MKDIR_P) ./parser
 	@: > parser/$(am__dirstamp)
@@ -368,6 +380,14 @@ parser/$(DEPDIR)/$(am__dirstamp):
 	parser/$(DEPDIR)/$(am__dirstamp)
 ./parser/TrivialGraphFormatParser.$(OBJEXT): parser/$(am__dirstamp) \
 	parser/$(DEPDIR)/$(am__dirstamp)
+solver/$(am__dirstamp):
+	@$(MKDIR_P) ./solver
+	@: > solver/$(am__dirstamp)
+solver/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) ./solver/$(DEPDIR)
+	@: > solver/$(DEPDIR)/$(am__dirstamp)
+./solver/compute_formula_stable.$(OBJEXT): solver/$(am__dirstamp) \
+	solver/$(DEPDIR)/$(am__dirstamp)
 
 ReverseSolver$(EXEEXT): $(ReverseSolver_OBJECTS) $(ReverseSolver_DEPENDENCIES) $(EXTRA_ReverseSolver_DEPENDENCIES) 
 	@rm -f ReverseSolver$(EXEEXT)
@@ -377,6 +397,7 @@ mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
 	-rm -f ./*.$(OBJEXT)
 	-rm -f ./parser/*.$(OBJEXT)
+	-rm -f ./solver/*.$(OBJEXT)
 	-rm -f ./specs/*.$(OBJEXT)
 
 distclean-compile:
@@ -386,7 +407,12 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./parser/$(DEPDIR)/AspartixFormatParser.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./parser/$(DEPDIR)/CNFFormatParser.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./parser/$(DEPDIR)/TrivialGraphFormatParser.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./solver/$(DEPDIR)/compute_formula_stable.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./specs/$(DEPDIR)/Accepted.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./specs/$(DEPDIR)/Attacks.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./specs/$(DEPDIR)/Defeated.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./specs/$(DEPDIR)/VarMapAtt.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./specs/$(DEPDIR)/VarMapDet.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./specs/$(DEPDIR)/VarMapP.Po@am__quote@
 
 .cc.o:
@@ -523,6 +549,8 @@ distclean-generic:
 	-rm -f ./$(am__dirstamp)
 	-rm -f parser/$(DEPDIR)/$(am__dirstamp)
 	-rm -f parser/$(am__dirstamp)
+	-rm -f solver/$(DEPDIR)/$(am__dirstamp)
+	-rm -f solver/$(am__dirstamp)
 	-rm -f specs/$(DEPDIR)/$(am__dirstamp)
 	-rm -f specs/$(am__dirstamp)
 	-test -z "$(DEPDIR)/$(am__dirstamp)" || rm -f $(DEPDIR)/$(am__dirstamp)
@@ -535,7 +563,7 @@ clean: clean-am
 clean-am: clean-binPROGRAMS clean-generic mostlyclean-am
 
 distclean: distclean-am
-	-rm -rf ./$(DEPDIR) ./parser/$(DEPDIR) ./specs/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) ./parser/$(DEPDIR) ./solver/$(DEPDIR) ./specs/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -581,7 +609,7 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-	-rm -rf ./$(DEPDIR) ./parser/$(DEPDIR) ./specs/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) ./parser/$(DEPDIR) ./solver/$(DEPDIR) ./specs/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

@@ -1,0 +1,7 @@
+matrix n*n
+att(i,j);
+mapping d'attaque
+
+3 mapping differents
+
+nb d'arguments
