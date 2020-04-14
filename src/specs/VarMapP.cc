@@ -1,4 +1,3 @@
-
 #include "VarMapP.h"
 
 using namespace std;

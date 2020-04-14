@@ -14,6 +14,18 @@
 using namespace std;
 
 int main(int argc, char** argv){
+/*
+  parser la ligne de commande
+  - fichier d'entrée
+  - fichier de sortie
+  - format de sortie
+  parser le fichier d'entrée
+  - VarMap des arguments remplie
+  - VarMap des accepted remplie
+  - Création de la varmap d'attaque
+*/
+
+
 
   /*cout << "run unsat test ..." << endl;
   vector<int> lits;
@@ -38,6 +50,12 @@ int main(int argc, char** argv){
   else if(ret == MaxSATSolver::ReturnCode::UNKNOWN)
 	cout << "unknown" << endl;
 */
+/*
+  int nbArgs = 2;
+  int nbPossibleAttacks = 
+  MaxSATSolver maxsat(nb_variables, 0);
+*/
+
 
 VarMapP vm = VarMapP();
 vm.addEntry("a");

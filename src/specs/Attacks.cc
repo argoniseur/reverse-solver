@@ -1,13 +1,4 @@
-/**
- * \file Attacks.cc
- * \brief The implementation of the class Attack
- * author Jean-Marie Lagniez, Emmanuel Lonca, Jean-Guy Mailly
- * \version 0.1
- * \date 7/11/2014
- */
-
 #include "Attacks.h"
-#include <iostream>
 
 using namespace std;
 
@@ -24,8 +15,6 @@ void Attacks::addAttack(string from, string to) {
   attacks[toVar].push_back(fromVar);
   ++nbAttacks;
   if (attacks[toVar].size() > nMaxAttacks) nMaxAttacks = attacks[toVar].size();
-  //if(!from.compare(to))
-    //varMap.setSelfAttacking(from,true);
 }
 
 vector<int> *Attacks::getAttacksTo(int var) {

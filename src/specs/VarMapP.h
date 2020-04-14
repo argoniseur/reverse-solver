@@ -76,7 +76,4 @@ class VarMapP {
 };
 
 // prevoir aussi def et det et att dans la map
-
-
-
 #endif

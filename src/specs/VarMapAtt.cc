@@ -1,6 +1,6 @@
 
 #include "VarMapAtt.h"
-#include "VarMapP.h"
+
 using namespace std;
 
 VarMapAtt::VarMapAtt(VarMapP vm) {

@@ -1,6 +1,5 @@
-
 #include "VarMapDet.h"
-#include "VarMapP.h"
+
 using namespace std;
 
 VarMapDet::VarMapDet(VarMapP vm) {
@@ -55,6 +54,3 @@ vector<vector<int> > VarMapDet::getDets(){
 long VarMapDet::nVars() {
   return varToName.size();
 }
-
-
-

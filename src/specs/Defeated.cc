@@ -1,5 +1,4 @@
 #include "Defeated.h"
-#include <iostream>
 
 using namespace std;
 
@@ -25,9 +24,3 @@ using namespace std;
 	unsigned int Defeated::nDefeats(){
 		return nbDefeats;
 	}
-
-	
-
-	
-
-
