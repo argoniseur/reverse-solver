@@ -57,10 +57,25 @@ using namespace std;
 	
 
 //3rd part of the formula (phi_det)
-//???
-
-
-//integration of all the clauses
+//pour tout a pour tout b (les 3 clauses)
+	for (int a=0;a<n_args;a++){
+		vector<int> clause1, clause2, clause3;
+		clause1.push_back(accs[a]);
+		clause3.push_back(-accs[a]);
+		for (int b =0; b<n_args;b++){
+			clause1.push_back(-dets[a][b]);
+			clause2.push_back(-dets[a][b]);
+			clause2.push_back(attacks[a][b]);
+			clause3.push_back(-attacks[a][b]);
+			clause3.push_back(dets[a][b]);
+			//adding of the close to the solver
+			maxsat.addClause(clause1);
+			maxsat.addClause(clause2);
+			maxsat.addClause(clause3);
+		}
+	}
+			
+			
 
 //solving
 std::vector<int> model;

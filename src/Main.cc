@@ -65,12 +65,12 @@ cout<<"a = "<<i<<endl;
 cout<<"b = "<<vm.getVar("b")<<endl;
 cout<<"nombre d'elements dans la vm "<<vm.nVars()<<endl;
 
-/*VarMapAtt attmap = VarMapAtt(vm);
+VarMapAtt attmap = VarMapAtt(vm);
 attmap.addEntry(vm,"a","b");
 cout<<"on est arrivé la"<<endl;
 vector<vector<int> >attacks = attmap.getAttacks();
 cout<<"attacks a bien été get"<<endl;
-cout<<"att(a,b)"<<attacks[vm.getVar("a")-1][vm.getVar("b")-1]<<endl;*/
+cout<<"att(a,b)"<<attacks[vm.getVar("a")-1][vm.getVar("b")-1]<<endl;
 return 0;
 
 }

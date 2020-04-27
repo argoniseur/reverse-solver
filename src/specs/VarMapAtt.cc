@@ -5,7 +5,10 @@ using namespace std;
 
 VarMapAtt::VarMapAtt(VarMapP vm) {
   nvars = 0;
-	attacks = vector<vector<int> > (vm.nVars());
+	attacks = vector<vector<int> > (vm.nVars(),0);
+	for (int i=0;i<vm.nVars();i++){
+		attacks[i] = vector<int> (vm.nVars(),0);
+	}
   
 }
 
