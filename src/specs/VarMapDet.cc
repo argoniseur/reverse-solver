@@ -5,6 +5,9 @@ using namespace std;
 VarMapDet::VarMapDet(VarMapP vm) {
   nvars = 0;
 	dets = vector<vector<int> > (vm.nVars());
+	for (int i=0;i<vm.nVars();i++){
+		dets[i] = vector<int> (vm.nVars());
+	}
   
 }
 
