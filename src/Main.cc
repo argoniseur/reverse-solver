@@ -8,7 +8,8 @@
 #include "VarMapP.h"
 #include "VarMapDet.h"
 #include "VarMapAtt.h"
-
+#include "ExtensionParser.h"
+#include "CommandLineHelper.h"
 //#include "compute_formula_stable.h"
 
 using namespace std;
@@ -56,6 +57,13 @@ int main(int argc, char** argv){
   MaxSATSolver maxsat(nb_variables, 0);
 */
 
+CommandLineHelper clh = CommandLineHelper(argc, argv);
+clh.parseCommandLine();
+
+ExtensionParser ep = ExtensionParser(clh.getInstanceFile());
+ep.parseInstance();
+
+ep.printArgs();
 
 VarMapP vm = VarMapP();
 vm.addEntry("a");
