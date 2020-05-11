@@ -3,22 +3,28 @@
 using namespace std;
 
 VarMapDet::VarMapDet(VarMapP vm) {
-  nvars = 0;
-	dets = vector<vector<int> > (vm.nVars());
-	for (int i=0;i<vm.nVars();i++){
-		dets[i] = vector<int> (vm.nVars());
-	}
-  
+ 	this->vm = vm;
+  	nvars = 0;
+	vector<int> vect(vm.nVars(), 0);
+	for (int i = 0; i<vm.nVars();i++){
+		dets.push_back(vect);
+		}
+	
 }
 
-void VarMapDet::addEntry(VarMapP vm, string a, string b) {
+void VarMapDet::addEntry(string a, string b) {
+	VarMapP vm = this->getVm();
+	
 	int i=vm.getVar(a);
 	int j=vm.getVar(b);
+	
   if (!contains("det_"+a +"_"+b)){
-	dets[i].at(j)=++nvars;
-   
+	
+	dets[i-1][j-1]=++nvars;
+   	
     varToName[nvars] = ("det_"+a +"_"+b);
     nameToVar["det_"+a +"_"+b] = nvars;
+	
   }
 }
 
@@ -27,11 +33,11 @@ string VarMapDet::getName(int var) {
   return varToName[var];
 }
 
-int VarMapDet::getVar(VarMapP vm, string a, string b) {
+int VarMapDet::getVar(string a, string b) {
 	string name = "det_"+a +"_"+b;
   int res = nameToVar[name];
   if(!res){
-    addEntry(vm,a,b);
+    addEntry(a,b);
     res = ++nvars;
   }
   return res;
@@ -57,3 +63,8 @@ vector<vector<int> > VarMapDet::getDets(){
 long VarMapDet::nVars() {
   return varToName.size();
 }
+
+VarMapP VarMapDet::getVm(){
+	return this->vm;
+}
+

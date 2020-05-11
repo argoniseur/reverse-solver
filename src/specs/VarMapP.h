@@ -6,6 +6,7 @@
 #include <iterator>
 #include <string>
 #include <cassert>
+#include <iostream>
 
 using namespace std;
 
@@ -44,6 +45,7 @@ class VarMapP {
    * \return the Boolean variable associated to name
    */
   int getVar(string name);
+
 
   /**
    * \fn contains

@@ -10,7 +10,7 @@
 #include "VarMapAtt.h"
 #include "ExtensionParser.h"
 #include "CommandLineHelper.h"
-//#include "compute_formula_stable.h"
+#include "compute_formula_stable.h"
 
 using namespace std;
 
@@ -57,28 +57,49 @@ int main(int argc, char** argv){
   MaxSATSolver maxsat(nb_variables, 0);
 */
 
-CommandLineHelper clh = CommandLineHelper(argc, argv);
+
+/*CommandLineHelper clh = CommandLineHelper(argc, argv);
 clh.parseCommandLine();
+
 
 ExtensionParser ep = ExtensionParser(clh.getInstanceFile());
 ep.parseInstance();
+cout<<"1"<<endl;
+ep.printArgs();*/
 
-ep.printArgs();
 
 VarMapP vm = VarMapP();
 vm.addEntry("a");
 vm.addEntry("b");
-int i = vm.getVar("a");
-cout<<"a = "<<i<<endl;
+vm.addEntry("c");
+
+cout<<"a = "<<vm.getVar("a")<<endl;
 cout<<"b = "<<vm.getVar("b")<<endl;
+cout<<"c = "<<vm.getVar("c")<<endl;
 cout<<"nombre d'elements dans la vm "<<vm.nVars()<<endl;
 
+
 VarMapAtt attmap = VarMapAtt(vm);
-attmap.addEntry(vm,"a","b");
+
+VarMapDet detmap = VarMapDet(vm);
+
+
+attmap.addEntry("a","b");
+cout<<"Entry AttMap ok!"<<endl;
+detmap.addEntry("b","a");
+detmap.addEntry("c","b");
+cout<<"Entry DetMap ok!"<<endl;
+
 cout<<"on est arrivé la"<<endl;
 vector<vector<int> >attacks = attmap.getAttacks();
+vector<vector<int> >dets = detmap.getDets();
 cout<<"attacks a bien été get"<<endl;
 cout<<"att(a,b)"<<attacks[vm.getVar("a")-1][vm.getVar("b")-1]<<endl;
+cout<<"det(b,a)"<<dets[vm.getVar("b")-1][vm.getVar("a")-1]<<endl;
+cout<<"det(c,b)"<<dets[vm.getVar("c")-1][vm.getVar("b")-1]<<endl;
+
+Compute_formula_stable(vm,attmap,vm,detmap);
+
 return 0;
 
 }

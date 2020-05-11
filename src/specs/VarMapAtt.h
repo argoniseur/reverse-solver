@@ -29,7 +29,7 @@ class VarMapAtt {
    * \brief Adds a new variables in the map
    * \param name : the name of the new variable
    */
-  void addEntry(VarMapP vm, string a, string b);
+  void addEntry(string a, string b);
 
   /**
    * \fn getName
@@ -45,7 +45,7 @@ class VarMapAtt {
    * \param name : the name of the variable
    * \return the Boolean variable associated to name
    */
-  int getVar(VarMapP vm, string a, string b);
+  int getVar(string a, string b);
 	
 
   /**
@@ -69,6 +69,8 @@ class VarMapAtt {
    * \return an integer indicating the number of variables the map contains
    */
   long nVars();
+
+	VarMapP getVm();
   
   
  private:
@@ -76,6 +78,7 @@ class VarMapAtt {
   map<string, int > nameToVar; /**< Mapping from the names to the Boolean variables */
 	vector<vector<int> > attacks;/**<Saving of the attacks*/
   int nvars; /**< The number of variables */
+	VarMapP vm;
   
 };
 

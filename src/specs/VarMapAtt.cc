@@ -4,23 +4,27 @@
 using namespace std;
 
 VarMapAtt::VarMapAtt(VarMapP vm) {
-  nvars = 0;
-	attacks = vector<vector<int> > (vm.nVars(),0);
-	for (int i=0;i<vm.nVars();i++){
-		attacks[i] = vector<int> (vm.nVars(),0);
-	}
-  
+	this->vm = vm;
+  	nvars = 0;
+	vector<int> vect(vm.nVars(), 0);
+	for (int i = 0; i<vm.nVars();i++){
+		attacks.push_back(vect);
+		}
+
 }
 
-void VarMapAtt::addEntry(VarMapP vm, string a, string b) {
+void VarMapAtt::addEntry(string a, string b) {
+	VarMapP vm = this->getVm();
 	int i=vm.getVar(a);
 	int j=vm.getVar(b);
+	
   if (!contains("att_"+a +"_"+b)){
-	attacks[i].at(j)=++nvars;
-   
+	
+	attacks[i-1][j-1]=++nvars;
     varToName[nvars] = ("att_"+a +"_"+b);
     nameToVar["att_"+a +"_"+b] = nvars;
   }
+	
 }
 
 
@@ -28,11 +32,11 @@ string VarMapAtt::getName(int var) {
   return varToName[var];
 }
 
-int VarMapAtt::getVar(VarMapP vm, string a, string b) {
+int VarMapAtt::getVar(string a, string b) {
 	string name = "att_"+a +"_"+b;
   int res = nameToVar[name];
   if(!res){
-    addEntry(vm,a,b);
+    addEntry(a,b);
     res = ++nvars;
   }
   return res;
@@ -57,6 +61,10 @@ vector<vector<int> > VarMapAtt::getAttacks(){
 
 long VarMapAtt::nVars() {
   return varToName.size();
+}
+
+VarMapP VarMapAtt::getVm(){
+	return this->vm;
 }
 
 

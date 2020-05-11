@@ -9,9 +9,10 @@ VarMapP::VarMapP() {
 
 void VarMapP::addEntry(string name) {
   if(!contains(name)){
+
     varToName[++nvars] = name;
-    
     nameToVar[name] = nvars;
+
   }
 }
 
@@ -43,5 +44,7 @@ vector<int>* VarMapP::intVars() {
 long VarMapP::nVars() {
   return varToName.size();
 }
+
+
 
 
