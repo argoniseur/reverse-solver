@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
-#include "Accepted.h"
+#include "VarMapP.h"
 
 using namespace std;
 
@@ -32,9 +32,14 @@ class ExtensionParser {
   int containsArg(string key);
 
   void printArgs();
+
+  void parseArgsToAccepted();
   
  private:
   vector<string> args;
+  vector<vector<int>> extensions;
+  VarMapP acceptedArgs;
+  VarMapP arguments;
   string instanceFile;
   string outputFile;
 

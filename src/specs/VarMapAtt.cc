@@ -1,4 +1,3 @@
-
 #include "VarMapAtt.h"
 
 using namespace std;
@@ -10,7 +9,6 @@ VarMapAtt::VarMapAtt(VarMapP vm) {
 	for (int i = 0; i<vm.nVars();i++){
 		attacks.push_back(vect);
 		}
-
 }
 
 void VarMapAtt::addEntry(string a, string b) {

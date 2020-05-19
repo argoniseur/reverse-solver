@@ -58,16 +58,16 @@ int main(int argc, char** argv){
 */
 
 
-/*CommandLineHelper clh = CommandLineHelper(argc, argv);
+CommandLineHelper clh = CommandLineHelper(argc, argv);
 clh.parseCommandLine();
+
 
 
 ExtensionParser ep = ExtensionParser(clh.getInstanceFile());
 ep.parseInstance();
-cout<<"1"<<endl;
-ep.printArgs();*/
+ep.printArgs();
 
-
+/*
 VarMapP vm = VarMapP();
 vm.addEntry("a");
 vm.addEntry("b");
@@ -77,7 +77,6 @@ cout<<"a = "<<vm.getVar("a")<<endl;
 cout<<"b = "<<vm.getVar("b")<<endl;
 cout<<"c = "<<vm.getVar("c")<<endl;
 cout<<"nombre d'elements dans la vm "<<vm.nVars()<<endl;
-
 
 VarMapAtt attmap = VarMapAtt(vm);
 
@@ -99,7 +98,7 @@ cout<<"det(b,a)"<<dets[vm.getVar("b")-1][vm.getVar("a")-1]<<endl;
 cout<<"det(c,b)"<<dets[vm.getVar("c")-1][vm.getVar("b")-1]<<endl;
 
 Compute_formula_stable(vm,attmap,vm,detmap);
-
+*/
 return 0;
 
 }
