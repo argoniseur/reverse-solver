@@ -11,6 +11,6 @@
 #include <iostream>
 #include <vector>
 
- void Compute_formula_stable(VarMapP vm, VarMapAtt am, VarMapP cm, VarMapDet dm );
+ vector<vector<int> > Compute_formula_stable(VarMapP vm, VarMapAtt am, VarMapP cm, VarMapDet dm );
 
 #endif

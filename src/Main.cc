@@ -98,7 +98,12 @@ cout<<"det(b,a)"<<dets[vm.getVar("b")-1][vm.getVar("a")-1]<<endl;
 cout<<"det(c,b)"<<dets[vm.getVar("c")-1][vm.getVar("b")-1]<<endl;
 
 Compute_formula_stable(vm,attmap,vm,detmap);
+<<<<<<< Updated upstream
 */
+=======
+cout<<"okii"<<endl;
+
+>>>>>>> Stashed changes
 return 0;
 
 }

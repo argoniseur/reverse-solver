@@ -68,12 +68,15 @@ class VarMapP {
    * \return an integer indicating the number of variables the map contains
    */
   long nVars();
+
+	vector<vector<int> > getExtensions();
   
   
  private:
   map<int, string> varToName; /**< Mapping from Boolean variables to their names */
   map<string, int> nameToVar; /**< Mapping from the names to the Boolean variables */
   int nvars; /**< The number of variables */
+	vector<vector<int> > extensions;
   
 };
 
