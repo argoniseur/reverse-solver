@@ -46,7 +46,6 @@ class VarMapP {
    */
   int getVar(string name);
 
-
   /**
    * \fn contains
    * \brief Checks if the map contains a variables corresponding to a name
@@ -69,6 +68,8 @@ class VarMapP {
    */
   long nVars();
 
+  void addExtension(vector<int> x);
+
 	vector<vector<int> > getExtensions();
   
   
@@ -77,7 +78,6 @@ class VarMapP {
   map<string, int> nameToVar; /**< Mapping from the names to the Boolean variables */
   int nvars; /**< The number of variables */
 	vector<vector<int> > extensions;
-  
 };
 
 // prevoir aussi def et det et att dans la map

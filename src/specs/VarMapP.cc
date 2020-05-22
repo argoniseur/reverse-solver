@@ -16,7 +16,6 @@ void VarMapP::addEntry(string name) {
   }
 }
 
-
 string VarMapP::getName(int var) {
   return varToName[var>0 ? var : -var];
 }
@@ -32,6 +31,10 @@ int VarMapP::getVar(string name) {
 
 bool VarMapP::contains(string name){
   return (bool)nameToVar[name];
+}
+
+void VarMapP::addExtension(vector<int> x){
+  extensions.push_back(x);
 }
 
 vector<int>* VarMapP::intVars() {

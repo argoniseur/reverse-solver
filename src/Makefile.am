@@ -2,8 +2,8 @@ AM_CPPFLAGS = -g -std=c++11 -Wall -Wno-parentheses -Werror -I$(srcdir)/specs -I$
 
 ## Register new classes here
 specsDirSources = ./specs/VarMapP.cc ./specs/Attacks.cc ./specs/Accepted.cc ./specs/Defeated.cc ./specs/VarMapAtt.cc ./specs/VarMapDet.cc
-parserDirSources = ./parser/AspartixFormatParser.cc ./parser/CNFFormatParser.cc ./parser/TrivialGraphFormatParser.cc ./parser/ExtensionParser.cc
 solverDirSources = ./solver/compute_formula_stable.cc ./solver/compute_phi_s.cc
+parserDirSources = ./parser/ExtensionParser.cc
 utilsDirSources = ./utils/CommandLineHelper.cc
 srcDirSources = ./Main.cc
 smaxLibDirectory = ../resources/smax/lib

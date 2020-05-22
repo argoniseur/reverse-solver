@@ -1,5 +1,3 @@
-#include "IParser.h"
-#include "ParserFactory.h"
 #include "MaxSATSolver.h"
 #include <iostream>
 #include <map>
@@ -67,6 +65,17 @@ ExtensionParser ep = ExtensionParser(clh.getInstanceFile());
 ep.parseInstance();
 ep.printArgs();
 
+
+VarMapP vm = ep.getArguments();
+
+vector<vector<int>> v = vm.getExtensions();
+for(unsigned int i=0;i<v.size();i++){
+  for(unsigned int j=0;j<v[i].size();j++){
+    cout << v[i][j] << ' ';
+  }
+  cout << endl;
+}
+
 /*
 VarMapP vm = VarMapP();
 vm.addEntry("a");
@@ -102,8 +111,6 @@ Compute_formula_stable(vm,attmap,vm,detmap);
 */
 
 cout<<"okii"<<endl;
-
-
 return 0;
 
 }

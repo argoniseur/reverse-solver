@@ -32,13 +32,15 @@ class ExtensionParser {
   int containsArg(string key);
 
   void printArgs();
-
-  void parseArgsToAccepted();
   
+  VarMapP getArguments();
+
+  void parseExtensionsVector();
+
+  void printExtensions();
  private:
   vector<string> args;
-  vector<vector<int>> extensions;
-  VarMapP acceptedArgs;
+  vector<vector<string>> extensions;
   VarMapP arguments;
   string instanceFile;
   string outputFile;
