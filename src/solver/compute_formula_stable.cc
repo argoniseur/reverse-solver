@@ -16,12 +16,12 @@ using namespace std;
 
 //pour les args et les accs prendre la methode intVars de la classe VarMapP (mapping "normal" int-string)
 
- vector<vector<int> > Compute_formula_stable(VarMapP vm, VarMapAtt am, VarMapP cm, VarMapDet dm){
+ vector<vector<int> > Compute_formula_stable(VarMapP vm, VarMapAtt am, VarMapDet dm){
 
 	vector<int>* args = vm.intVars();
 	int n_args = args->size();
 	vector<vector<int> > attacks = am.getAttacks();
-	vector<int>* accs = cm.intVars();
+	
 	vector<vector<int> > dets = dm.getDets();
 
 //nombre de variables (autant qu'il y a de att de acc et de det)
@@ -40,8 +40,8 @@ vector<vector<int> > phi_sigma;
 		for(int b=1;b<n_args+1;b++){
 			vector<int> lits;
 			lits.push_back(-attacks[a-1][b-1]);
-			lits.push_back(-accs->at(a-1));
-			lits.push_back(-accs->at(b-1));
+			lits.push_back(-a);
+			lits.push_back(-b);
 			phi_sigma.push_back(lits);
 		//maxsat.addClause(lits);
 		}
@@ -51,7 +51,7 @@ vector<vector<int> > phi_sigma;
 //2nd part of the formula
 	for (int a=1;a<n_args+1;a++){
 	vector<int> lits;
-	lits.push_back(a-1);
+	lits.push_back(a);
 		for(int b=1;b<n_args+1;b++){
 			lits.push_back(dets[a-1][b-1]);
 		}
@@ -64,8 +64,8 @@ vector<vector<int> > phi_sigma;
 //pour tout a pour tout b (les 3 clauses)
 	for (int a=1;a<n_args+1;a++){
 		vector<int> clause1, clause2, clause3;
-		clause1.push_back(accs->at(a-1));
-		clause3.push_back(-accs->at(a-1));
+		clause1.push_back(a);
+		clause3.push_back(-a);
 		for (int b =1; b<n_args+1;b++){
 			clause1.push_back(-dets[a-1][b-1]);
 			clause2.push_back(-dets[a-1][b-1]);

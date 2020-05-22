@@ -45,7 +45,7 @@ long VarMapP::nVars() {
   return varToName.size();
 }
 
-vector<vector<int> > getExtensions(){
+vector<vector<int> > VarMapP::getExtensions(){
 	return extensions;
 }
 

@@ -107,7 +107,8 @@ am__objects_3 = ./parser/AspartixFormatParser.$(OBJEXT) \
 	./parser/CNFFormatParser.$(OBJEXT) \
 	./parser/TrivialGraphFormatParser.$(OBJEXT) \
 	./parser/ExtensionParser.$(OBJEXT)
-am__objects_4 = ./solver/compute_formula_stable.$(OBJEXT)
+am__objects_4 = ./solver/compute_formula_stable.$(OBJEXT) \
+	./solver/compute_phi_s.$(OBJEXT)
 am__objects_5 = ./utils/CommandLineHelper.$(OBJEXT)
 am_ReverseSolver_OBJECTS = $(am__objects_1) $(am__objects_2) \
 	$(am__objects_3) $(am__objects_4) $(am__objects_5)
@@ -262,7 +263,7 @@ top_srcdir = @top_srcdir@
 AM_CPPFLAGS = -g -std=c++11 -Wall -Wno-parentheses -Werror -I$(srcdir)/specs -I$(srcdir)/parser -I$(smaxIncludeDirectory) -I$(srcdir)/solver -I$(srcdir)/utils
 specsDirSources = ./specs/VarMapP.cc ./specs/Attacks.cc ./specs/Accepted.cc ./specs/Defeated.cc ./specs/VarMapAtt.cc ./specs/VarMapDet.cc
 parserDirSources = ./parser/AspartixFormatParser.cc ./parser/CNFFormatParser.cc ./parser/TrivialGraphFormatParser.cc ./parser/ExtensionParser.cc
-solverDirSources = ./solver/compute_formula_stable.cc
+solverDirSources = ./solver/compute_formula_stable.cc ./solver/compute_phi_s.cc
 utilsDirSources = ./utils/CommandLineHelper.cc
 srcDirSources = ./Main.cc
 smaxLibDirectory = ../resources/smax/lib
@@ -393,6 +394,8 @@ solver/$(DEPDIR)/$(am__dirstamp):
 	@: > solver/$(DEPDIR)/$(am__dirstamp)
 ./solver/compute_formula_stable.$(OBJEXT): solver/$(am__dirstamp) \
 	solver/$(DEPDIR)/$(am__dirstamp)
+./solver/compute_phi_s.$(OBJEXT): solver/$(am__dirstamp) \
+	solver/$(DEPDIR)/$(am__dirstamp)
 utils/$(am__dirstamp):
 	@$(MKDIR_P) ./utils
 	@: > utils/$(am__dirstamp)
@@ -423,6 +426,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./parser/$(DEPDIR)/ExtensionParser.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./parser/$(DEPDIR)/TrivialGraphFormatParser.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./solver/$(DEPDIR)/compute_formula_stable.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./solver/$(DEPDIR)/compute_phi_s.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./specs/$(DEPDIR)/Accepted.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./specs/$(DEPDIR)/Attacks.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./specs/$(DEPDIR)/Defeated.Po@am__quote@
