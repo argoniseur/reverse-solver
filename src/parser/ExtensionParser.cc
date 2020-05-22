@@ -26,9 +26,9 @@ void ExtensionParser::parseInstance(){
       	if(!line.empty()){
 			if((line.back() == '[')){
 	  			//Start of file
-	  			cout << "debut de fichier" << endl;
+	  			//cout << "debut de fichier" << endl;
 	  		}else if((line.find("[]") == 0)){
-	  			cout << "pas d'extension" << endl;
+	  			//cout << "pas d'extension" << endl;
 	  		} else if((line.find("[") == 0)){
 	  			//We remove the [
 	  			line = line.substr(1);

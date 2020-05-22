@@ -53,7 +53,7 @@ vector<vector<int> > phi_sigma;
 		vector<int> lits;
 		lits.push_back(a);
 		for(int b=1;b<n_args+1;b++){
-			lits.push_back(dets[a-1][b-1]);
+			lits.push_back(dets[b-1][a-1]);
 		}
 		phi_sigma.push_back(lits);
 	//maxsat.addClause(lits);
