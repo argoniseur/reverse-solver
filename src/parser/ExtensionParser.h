@@ -38,6 +38,9 @@ class ExtensionParser {
   void parseExtensionsVector();
 
   void printExtensions();
+
+	vector<string> getArgs();	
+
  private:
   vector<string> args;
   vector<vector<string>> extensions;

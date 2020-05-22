@@ -4,7 +4,7 @@ using namespace std;
 
 VarMapAtt::VarMapAtt(VarMapP vm) {
 	this->vm = vm;
-  	nvars = 0;
+  	nvars = (vm.nVars()+1);
 	vector<int> vect(vm.nVars(), 0);
 	for (int i = 0; i<vm.nVars();i++){
 		attacks.push_back(vect);

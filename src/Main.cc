@@ -87,9 +87,6 @@ cout<<"b = "<<vm.getVar("b")<<endl;
 cout<<"c = "<<vm.getVar("c")<<endl;
 cout<<"nombre d'elements dans la vm "<<vm.nVars()<<endl;
 
-VarMapAtt attmap = VarMapAtt(vm);
-
-VarMapDet detmap = VarMapDet(vm);
 
 
 attmap.addEntry("a","b");
@@ -109,6 +106,16 @@ cout<<"det(c,b)"<<dets[vm.getVar("c")-1][vm.getVar("b")-1]<<endl;
 Compute_formula_stable(vm,attmap,vm,detmap);
 
 */
+VarMapAtt attmap = VarMapAtt(vm);
+VarMapDet detmap = VarMapDet(vm);
+
+vector<string> args = ep.getArgs();
+for (unsigned int i =0;i<args.size();i++){
+	for (unsigned int j = 0; j<args.size();j++){
+		attmap.addEntry(args[i],args[j]);
+		detmap.addEntry(args[i],args[j]);
+	}
+}
 
 cout<<"okii"<<endl;
 return 0;

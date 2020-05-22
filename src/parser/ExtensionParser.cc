@@ -107,3 +107,7 @@ void ExtensionParser::printExtensions(){
 		cout << endl;	
 	}
 }
+
+vector<string> ExtensionParser::getArgs(){
+	return args;
+}
