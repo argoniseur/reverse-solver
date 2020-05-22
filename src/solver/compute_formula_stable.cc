@@ -50,12 +50,12 @@ vector<vector<int> > phi_sigma;
 
 //2nd part of the formula
 	for (int a=1;a<n_args+1;a++){
-	vector<int> lits;
-	lits.push_back(a);
+		vector<int> lits;
+		lits.push_back(a);
 		for(int b=1;b<n_args+1;b++){
 			lits.push_back(dets[a-1][b-1]);
 		}
-	phi_sigma.push_back(lits);
+		phi_sigma.push_back(lits);
 	//maxsat.addClause(lits);
 	}
 	

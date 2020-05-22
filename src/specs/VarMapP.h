@@ -72,12 +72,14 @@ class VarMapP {
 
 	vector<vector<int> > getExtensions();
   
+  vector<int> getArgs();
   
  private:
   map<int, string> varToName; /**< Mapping from Boolean variables to their names */
   map<string, int> nameToVar; /**< Mapping from the names to the Boolean variables */
   int nvars; /**< The number of variables */
 	vector<vector<int> > extensions;
+  vector<int> args;
 };
 
 // prevoir aussi def et det et att dans la map

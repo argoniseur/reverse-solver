@@ -12,7 +12,7 @@ void VarMapP::addEntry(string name) {
 
     varToName[++nvars] = name;
     nameToVar[name] = nvars;
-
+    args.push_back(nvars);
   }
 }
 
@@ -52,6 +52,8 @@ vector<vector<int> > VarMapP::getExtensions(){
 	return extensions;
 }
 
-
+vector<int> VarMapP::getArgs(){
+  return args;
+}
 
 
