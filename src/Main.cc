@@ -66,9 +66,49 @@ for (unsigned int i =0;i<args.size();i++){
 }
 
 vector<vector<int> > atts = attmap.getAttacks();
+
 cout<<attmap.getName(atts[0][1]);
 cout<<atts[0][1]<<endl;
-//phi_sigma_S(vm,attmap,detmap);
+vector<vector<int> > test = phi_sigma_S(vm,attmap,detmap);
+//essai de remplir le solver : 
+
+//initialisation of the solver
+MaxSATSolver maxsat(test.size(), 0);
+cout << " solver: " << maxsat.getSolverName () << " implementing version " << maxsat.getVersion() << endl;
+for (unsigned int i=0;i<test.size();i++){
+	maxsat.addClause(test[i]);
+}
+cout<<"solver rempli"<<endl;
+//solving
+
+
+vector<int> model;
+  uint64_t core = 0;
+  MaxSATSolver::ReturnCode ret = maxsat.compute_maxsat(model, core);
+
+	if(ret == MaxSATSolver::ReturnCode::SATISFIABLE)
+		cout << "satisfiable" << endl;
+  	else 
+		if(ret == MaxSATSolver::ReturnCode::UNSATISFIABLE)
+		cout << "unsatisfiable" << endl;
+  	else 
+		if(ret == MaxSATSolver::ReturnCode::UNKNOWN)
+		cout << "unknown" << endl;
+  	else 
+		if(ret == MaxSATSolver::ReturnCode::OPTIMAL)
+		cout << "optimal" << endl;
+ 	else
+		cout << "unknown result" << endl;
+
+  cout << "returned core of size " << model.size() << endl;
+
+  assert (ret == MaxSATSolver::ReturnCode::OPTIMAL);
+//affichage des models de la formule:
+for (unsigned int i =0;i<model.size();i++){
+	cout<<"model["<<i<<"]"<<model[i]<<endl;
+}
+
+
 cout<<"okii"<<endl;
 return 0;
 

@@ -8,23 +8,38 @@
 vector<vector<int> > phi_S(VarMapP arguments){
 
 vector<vector<int> > extensions = arguments.getExtensions();
-
 vector<vector<int> > result;
 vector<int> args = arguments.getArgs();
 
-	for (unsigned int i=0;i<extensions.size();i++){
-	vector<int> ei;
+
+//bref afficage des extensions:
+/*
+for (unsigned int l=0;l<extensions.size();l++){
+	for (unsigned int m = 0;m<extensions[l].size();m++){
+	cout<<"extensions "<<l<<" "<<m<<" "<<extensions[l][m];
 	
-		vector<int> ext = extensions[i];
-		for (unsigned int j=0;i<ext.size();j++){
-			ei.push_back(ext[j]);
+	}
+	cout<<"\n"<<endl;
+}*/
+
+	for (unsigned int i=0;i<extensions.size();i++){
+		vector<int> ei;
+		
+		for (unsigned int j=0;j<extensions[i].size();j++){
+			ei.push_back(extensions[i][j]);
 		}
-		for (unsigned int k=0;k<args.size();k++){
-			if (!(find(ei.begin(), ei.end(), k) != ei.end())) {
+		for (unsigned int k=0;k<args.size()+1;k++){
+			if ((find(ei.begin()-1, ei.end(), k) == ei.end())) {
 				ei.push_back(-k);
 			} 
 		}
+		//affichage de ei
+		cout<<"e"<<i<<":";
+		for (unsigned int l = 0;l<ei.size();l++){
+			cout<<" "<<ei[l];
+		}
 	result.push_back(ei);
+	cout<<"\n"<<endl;
 	}
 
 return result;
@@ -76,7 +91,9 @@ vector<vector<int> > phi_sigma_S(VarMapP arguments, VarMapAtt attacks, VarMapDet
 vector<vector<int> > phi_sigma_S;
 //getting of the formulas
 vector<vector<int> > phi_sigma = Compute_formula_stable(arguments, attacks, dets);
+cout<<"phi_sigma_faite"<<endl;
 vector<vector<int> > phi_s = phi_S(arguments);
+cout<<"phi_S faite"<<endl;
 
 //creating of new variables (int) such that xs <-> phi_S and xsigma <-> phi_sigma and xs<->xsigma
 
