@@ -5,7 +5,7 @@ using namespace std;
 
 CommandLineHelper::CommandLineHelper(int argc, char** argv) {
   instanceFile = "";
-  outputFile = "";
+  outputFile = "output.apx";
   for(int i=1; i<argc; ++i) {
     args.push_back(string(argv[i]));
   }
@@ -35,4 +35,8 @@ void CommandLineHelper::parseCommandLine() {
 
 string CommandLineHelper::getInstanceFile(){
     return instanceFile;
+  }
+
+string CommandLineHelper::getOutputFile(){
+    return outputFile;
   }

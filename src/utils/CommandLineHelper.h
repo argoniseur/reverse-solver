@@ -31,6 +31,8 @@ class CommandLineHelper {
 
   string getInstanceFile();
   
+  string getOutputFile();
+  
  private:
   vector<string> args;
   bool mustExit;

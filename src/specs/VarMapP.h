@@ -73,6 +73,8 @@ class VarMapP {
 	vector<vector<int> > getExtensions();
   
   vector<int> getArgs();
+
+  void setArgs(vector<int> a);
   
  private:
   map<int, string> varToName; /**< Mapping from Boolean variables to their names */

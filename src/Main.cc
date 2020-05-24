@@ -10,7 +10,7 @@
 #include "CommandLineHelper.h"
 #include "compute_formula_stable.h"
 #include "compute_phi_s.h"
-
+#include "AspartixParser.h"
 using namespace std;
 
 int main(int argc, char** argv){
@@ -108,6 +108,20 @@ for (unsigned int i =0;i<model.size();i++){
 	cout<<"model["<<i<<"]"<<model[i]<<endl;
 }
 
+int nargs = ep.getNumVar();
+int debutIndicesAttaque = nargs+1;
+int finIndicesAttaque = (nargs*nargs)+nargs;
+vector<int> attModel;
+for (int i=debutIndicesAttaque; i<finIndicesAttaque+1;i++){
+  cout << "i: " << i << " " << attmap.getName(i) << endl;
+  if(model[i] > 0){
+    attModel.push_back(model[i]);
+  }
+}
+
+AspartixParser ap = AspartixParser(clh.getOutputFile(), ep.getArgs(), attModel);
+ap.parseFile(attmap);
+cout << "a -> a = " << vm.getVar("a_a") << endl;
 
 cout<<"okii"<<endl;
 return 0;

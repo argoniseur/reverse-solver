@@ -56,4 +56,7 @@ vector<int> VarMapP::getArgs(){
   return args;
 }
 
+void VarMapP::setArgs(vector<int> a){
+  args = a;
+}
 

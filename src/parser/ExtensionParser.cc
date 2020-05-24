@@ -67,6 +67,7 @@ void ExtensionParser::parseInstance(){
   		}
   	}
   	parseExtensionsVector();
+  	parseArgumentVector();
   	file.close();
 }
 
@@ -79,6 +80,14 @@ void ExtensionParser::parseExtensionsVector(){
 		
 		arguments.addExtension(n);
 	}
+}
+
+void ExtensionParser::parseArgumentVector(){
+	vector<int> ret;
+	for(unsigned int i=0;i<args.size();i++){
+		ret.push_back(arguments.getVar(args[i]));
+	}
+	arguments.setArgs(ret);
 }
 
 VarMapP ExtensionParser::getArguments(){
@@ -110,4 +119,8 @@ void ExtensionParser::printExtensions(){
 
 vector<string> ExtensionParser::getArgs(){
 	return args;
+}
+
+int ExtensionParser::getNumVar(){
+	return args.size();
 }

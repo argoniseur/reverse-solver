@@ -15,18 +15,9 @@ using namespace std;
 class ExtensionParser {
 
  public:
-  /**
-   * \fn CommandLineHelper
-   * \brief Constructor
-   * \param argc : the number of program's arguments passed in main function
-   * \param argv : the program's arguments passed in main function
-   */
+
   ExtensionParser(string inputFile);
 
-  /**
-   * \fn parseCommandLine
-   * \brief Constructor
-   */  
   void parseInstance();
 
   int containsArg(string key);
@@ -37,9 +28,13 @@ class ExtensionParser {
 
   void parseExtensionsVector();
 
+  void parseArgumentVector();
+
   void printExtensions();
 
 	vector<string> getArgs();	
+
+  int getNumVar();
 
  private:
   vector<string> args;
