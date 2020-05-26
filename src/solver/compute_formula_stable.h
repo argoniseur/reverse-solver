@@ -4,9 +4,6 @@
 #include "VarMapP.h"
 #include "VarMapAtt.h"
 #include "VarMapDet.h"
-#include "Accepted.h"
-#include "Defeated.h"
-#include "Attacks.h"
 #include "MaxSATSolver.h"
 #include <iostream>
 #include <vector>
