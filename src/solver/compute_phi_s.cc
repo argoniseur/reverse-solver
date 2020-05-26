@@ -10,36 +10,28 @@ vector<vector<int> > phi_S(VarMapP arguments){
 vector<vector<int> > extensions = arguments.getExtensions();
 vector<vector<int> > result;
 vector<int> args = arguments.getArgs();
+int n_args = args.size();
+int n_extensions = extensions.size();
 
-
-//bref afficage des extensions:
-/*
-for (unsigned int l=0;l<extensions.size();l++){
-	for (unsigned int m = 0;m<extensions[l].size();m++){
-	cout<<"extensions "<<l<<" "<<m<<" "<<extensions[l][m];
-	
-	}
-	cout<<"\n"<<endl;
-}*/
-
-	for (unsigned int i=0;i<extensions.size();i++){
+	for ( int i=0;i<n_extensions;i++){
 		vector<int> ei;
+		vector<int> ext = extensions[i];
+		int ext_size = ext.size();
 		
-		for (unsigned int j=0;j<extensions[i].size();j++){
+		for (int j=0;j<ext_size;j++){
 			ei.push_back(extensions[i][j]);
 		}
-		for (unsigned int k=0;k<args.size()+1;k++){
+		for (int k=1;k < n_args+1;k++){
 			if ((find(ei.begin()-1, ei.end(), k) == ei.end())) {
 				ei.push_back(-k);
 			} 
 		}
 		//affichage de ei
-		cout<<"e"<<i<<":";
+		/*cout<<"e"<<i<<":";
 		for (unsigned int l = 0;l<ei.size();l++){
 			cout<<" "<<ei[l];
-		}
+		}*/
 	result.push_back(ei);
-	cout<<"\n"<<endl;
 	}
 
 return result;
@@ -58,17 +50,17 @@ vector<vector<int> > transformationTseytin(int ti, vector<vector<int> > dnf){
 //with a cube: a conjunction of literals
 
 //idea of the transformation : for each cube create a new variable(int) tî
-//end of the formula : (-l1 -l2... tî) inter (-tî l1) inter ... inter (-tî lk)
+//end of the formula : (-l1 -l2... tî) inter (-tî l1) inter ... inter (-tî lk) inter (ti1 ... tik)
 
 vector<vector<int> > cnf;
 
-
+	vector<int> clauseti;
 	for (unsigned int i=0;i<dnf.size();i++){
 		vector<int> cube = dnf[i];
 		vector<int> clause;
-		
-		//ti created as linear combination of the cube
+
 		clause.push_back(ti);
+		clauseti.push_back(ti);
 		for (unsigned int k=0;k<cube.size();k++){
 			clause.push_back(-cube[k]);
 			vector<int> cl;
@@ -77,8 +69,10 @@ vector<vector<int> > cnf;
 			cnf.push_back(cl);
 		}
 		cnf.push_back(clause);
+		clause.clear();
 		++ti;
 	}
+	cnf.push_back(clauseti);
 
 return cnf;
 
@@ -99,11 +93,11 @@ cout<<"phi_S faite"<<endl;
 
 // arguments : 1 -> n
 //attcks : n+1-> n2+n
-//dets : n2+n+1->2n2+n+1
-//on defini xs = 2*n2 et xsigma 2*n2 + 1 dans le soucis de ne pas utiliser quelquechose de deja pris
+//dets : n2+n+1->2n2+n
+//on defini xs = 2*n2 + n + 1 et xsigma 2*n2 + n + 3 dans le soucis de ne pas utiliser quelquechose de deja pris
 
 int n_args = arguments.nVars();
-int xs = (2*n_args*n_args + n_args + 2);
+int xs = (2*n_args*n_args + n_args + 1);
 int xsigma = xs + 1;
 
 
@@ -122,7 +116,7 @@ phi_sigma_S.push_back(cl2);
 
 // equivalence entre xsigma et phi_sigma
 
-//partie -xsigma ou phisma 
+//partie -xsigma ou phi_sigma 
 //injecter -xsigma dans chaque clause de phi_sigma
 
 	for (unsigned int i=0;i<phi_sigma.size();i++){

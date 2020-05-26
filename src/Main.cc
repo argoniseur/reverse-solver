@@ -43,15 +43,6 @@ ep.parseInstance();
 //getting of the of the arguments
 VarMapP vm = ep.getArguments();
 
-/*
-vector<vector<int>> v = vm.getExtensions();
-for(unsigned int i=0;i<v.size();i++){
-  for(unsigned int j=0;j<v[i].size();j++){
-    cout << v[i][j] << ' ';
-  }
-  cout << endl;
-}*/
-
 //creating of the attacks and the defeated
 VarMapAtt attmap = VarMapAtt(vm);
 VarMapDet detmap = VarMapDet(vm);
@@ -67,17 +58,18 @@ for (unsigned int i =0;i<args.size();i++){
 
 vector<vector<int> > atts = attmap.getAttacks();
 
-cout<<attmap.getName(atts[0][1]);
-cout<<atts[0][1]<<endl;
+
 vector<vector<int> > test = phi_sigma_S(vm,attmap,detmap);
 //essai de remplir le solver : 
 
 //initialisation of the solver
 MaxSATSolver maxsat(test.size(), 0);
 cout << " solver: " << maxsat.getSolverName () << " implementing version " << maxsat.getVersion() << endl;
+/*cout<<"taille de test "<<test.size()<<endl;
 for (unsigned int i=0;i<test.size();i++){
 	maxsat.addClause(test[i]);
-}
+	cout<<"taille de test[i] "<<test[i].size()<<endl;
+}*/
 cout<<"solver rempli"<<endl;
 //solving
 
@@ -102,28 +94,31 @@ vector<int> model;
 
   cout << "returned core of size " << model.size() << endl;
 
-  assert (ret == MaxSATSolver::ReturnCode::OPTIMAL);
+  //assert (ret == MaxSATSolver::ReturnCode::OPTIMAL);
 //affichage des models de la formule:
+
 for (unsigned int i =0;i<model.size();i++){
 	cout<<"model["<<i<<"]"<<model[i]<<endl;
 }
 
+
 int nargs = ep.getNumVar();
 int debutIndicesAttaque = nargs+1;
-int finIndicesAttaque = (nargs*nargs)+nargs;
+int finIndicesAttaque = ((nargs*nargs)+nargs);
 vector<int> attModel;
-for (int i=debutIndicesAttaque; i<finIndicesAttaque+1;i++){
-  cout << "i: " << i << " " << attmap.getName(i) << endl;
-  if(model[i] > 0){
-    attModel.push_back(model[i]);
-  }
+if(model.size()>0){
+	for (int i=debutIndicesAttaque; i<finIndicesAttaque+1;i++){
+	  cout << "i: " << i << " " << attmap.getName(i) << endl;
+	  if(model[i] > 0){
+	    attModel.push_back(model[i]);
+	  }
+	}
 }
-
+cout<<"fin attmodel"<<endl;
 AspartixParser ap = AspartixParser(clh.getOutputFile(), ep.getArgs(), attModel);
 ap.parseFile(attmap);
-cout << "a -> a = " << vm.getVar("a_a") << endl;
+cout<<"parsing de sortie"<<endl;
 
-cout<<"okii"<<endl;
 return 0;
 
 }
