@@ -21,6 +21,5 @@ void AspartixParser::parseFile(VarMapAtt attmap){
 		string firstArg = currentAtt.substr(0,underscoreIndex);
 		string secondArg = currentAtt.substr(underscoreIndex+1);
 		file << "att(" << firstArg << "," << secondArg << ")." << endl;
-		cout << secondArg << endl;
 	}
 }

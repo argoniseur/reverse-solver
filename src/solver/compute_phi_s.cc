@@ -85,9 +85,7 @@ vector<vector<int> > phi_sigma_S(VarMapP arguments, VarMapAtt attacks, VarMapDet
 vector<vector<int> > phi_sigma_S;
 //getting of the formulas
 vector<vector<int> > phi_sigma = Compute_formula_stable(arguments, attacks, dets);
-cout<<"phi_sigma_faite"<<endl;
 vector<vector<int> > phi_s = phi_S(arguments);
-cout<<"phi_S faite"<<endl;
 
 //creating of new variables (int) such that xs <-> phi_S and xsigma <-> phi_sigma and xs<->xsigma
 

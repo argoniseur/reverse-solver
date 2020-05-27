@@ -61,52 +61,13 @@ for (unsigned int i =0;i<args.size();i++){
 	}
 }
 
+
 vector<vector<int> > atts = attmap.getAttacks();
 
 
 vector<vector<int> > test = phi_sigma_S(vm,attmap,detmap);
+
 //essai de remplir le solver : 
-
-//initialisation of the solver
-MaxSATSolver maxsat(test.size(), 0);
-cout << " solver: " << maxsat.getSolverName () << " implementing version " << maxsat.getVersion() << endl;
-cout<<"taille de test "<<test.size()<<endl;
-cout << vm.nVars() << endl;
-/*
-for (unsigned int i=0;i<test.size();i++){
-	maxsat.addClause(test[i]);
-	cout<<"taille de test[i] "<<test[i].size()<<endl;
-}
-cout<<"solver rempli"<<endl;
-//solving
-
-
-vector<int> model;
-  uint64_t core = 0;
-  MaxSATSolver::ReturnCode ret = maxsat.compute_maxsat(model, core);
-
-	if(ret == MaxSATSolver::ReturnCode::SATISFIABLE)
-		cout << "satisfiable" << endl;
-  	else 
-		if(ret == MaxSATSolver::ReturnCode::UNSATISFIABLE)
-		cout << "unsatisfiable" << endl;
-  	else 
-		if(ret == MaxSATSolver::ReturnCode::UNKNOWN)
-		cout << "unknown" << endl;
-  	else 
-		if(ret == MaxSATSolver::ReturnCode::OPTIMAL)
-		cout << "optimal" << endl;
- 	else
-		cout << "unknown result" << endl;
-
-  cout << "returned core of size " << model.size() << endl;
-
-  //assert (ret == MaxSATSolver::ReturnCode::OPTIMAL);
-//affichage des models de la formule:
-
-for (unsigned int i =0;i<model.size();i++){
-	cout<<"model["<<i<<"]"<<model[i]<<endl;
-}*/
 int max = 0;
 for(unsigned int i=0;i<test.size();i++){
     for(unsigned int j=0;j<test[i].size();j++){
@@ -116,9 +77,9 @@ for(unsigned int i=0;i<test.size();i++){
     }
   }
 
-QdimacsParser qd = QdimacsParser();
+QdimacsParser qd = QdimacsParser(vm.nVars());
 
-qd.parseToFile(test, vm.nVars(), max);
+qd.parseToFile(test, max);
 
 string command = "./resources/CAQE/caqe --qdo " + qd.getFile();
 char buffer[128];
@@ -139,30 +100,19 @@ while (!feof(pipe)) {
   }
 
 pclose(pipe);
-cout << result << endl;
-//execlp("./resources/CAQE/caqe", "--qdo" ,qd.getFile().c_str(), ">>", "sortie.qdimacs");
 
+vector<int> attModel = qd.parseFromFile(result);
 
-
-/*
-int nargs = ep.getNumVar();
-int debutIndicesAttaque = nargs+1;
-int finIndicesAttaque = ((nargs*nargs)+nargs);
-vector<int> attModel;
-if(model.size()>0){
-	for (int i=debutIndicesAttaque; i<finIndicesAttaque+1;i++){
-	  cout << "i: " << i << " " << attmap.getName(i) << endl;
-	  if(model[i] > 0){
-	    attModel.push_back(model[i]);
-	  }
-	}
+if(attModel[0] == 1){
+  attModel.erase(attModel.begin());
+  AspartixParser ap = AspartixParser(clh.getOutputFile(), ep.getArgs(), attModel);
+  ap.parseFile(attmap);
+  cout << "Fichier généré" << endl;
+}else{
+  cout << "Insatisfiable" << endl;
 }
-cout<<"fin attmodel"<<endl;
 
-AspartixParser ap = AspartixParser(clh.getOutputFile(), ep.getArgs(), attModel);
-ap.parseFile(attmap);
-cout<<"parsing de sortie"<<endl;
-*/
+
 return 0;
 
 }

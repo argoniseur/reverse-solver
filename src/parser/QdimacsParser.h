@@ -12,15 +12,16 @@ using namespace std;
 class QdimacsParser {
 
  public:
-  QdimacsParser();
+  QdimacsParser(int nargs);
 
-  void parseToFile(vector<vector<int>> CNF, int args, int max);
+  void parseToFile(vector<vector<int>> CNF, int max);
 
-  void parseFromFile();
+  vector<int> parseFromFile(string sortie);
   
   string getFile();
 
  private:
   string temporary;
+  int nargs;
 };
 #endif
