@@ -66,6 +66,7 @@ vector<int> QdimacsParser::parseFromFile(string sortie){
 		}
 	}
 	file2.close();
+	remove("tmp");
 	return ret;
 }
 

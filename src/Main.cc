@@ -112,7 +112,7 @@ if(attModel[0] == 1){
   cout << "Insatisfiable" << endl;
 }
 
-
+remove("tmp.qdimacs");
 return 0;
 
 }
