@@ -11,6 +11,11 @@
 #include "compute_formula_stable.h"
 #include "compute_phi_s.h"
 #include "AspartixParser.h"
+#include "QdimacsParser.h"
+#include <stdio.h> 
+#include <stdlib.h> 
+#include <unistd.h> 
+#include <cstring>
 using namespace std;
 
 int main(int argc, char** argv){
@@ -65,11 +70,13 @@ vector<vector<int> > test = phi_sigma_S(vm,attmap,detmap);
 //initialisation of the solver
 MaxSATSolver maxsat(test.size(), 0);
 cout << " solver: " << maxsat.getSolverName () << " implementing version " << maxsat.getVersion() << endl;
-/*cout<<"taille de test "<<test.size()<<endl;
+cout<<"taille de test "<<test.size()<<endl;
+cout << vm.nVars() << endl;
+/*
 for (unsigned int i=0;i<test.size();i++){
 	maxsat.addClause(test[i]);
 	cout<<"taille de test[i] "<<test[i].size()<<endl;
-}*/
+}
 cout<<"solver rempli"<<endl;
 //solving
 
@@ -99,9 +106,37 @@ vector<int> model;
 
 for (unsigned int i =0;i<model.size();i++){
 	cout<<"model["<<i<<"]"<<model[i]<<endl;
+}*/
+
+QdimacsParser qd = QdimacsParser();
+
+qd.parseToFile(test, vm.nVars());
+
+string command = "./resources/CAQE/caqe --qdo " + qd.getFile();
+char buffer[128];
+string result = "";
+
+// Open pipe to file
+FILE* pipe = popen(command.c_str(), "r");
+if (!pipe) {
+   cout << "popen failed!" << endl;
 }
 
+// read till end of process:
+while (!feof(pipe)) {
 
+  // use buffer to read and add to result
+  if (fgets(buffer, 128, pipe) != NULL)
+    result += buffer;
+  }
+
+pclose(pipe);
+cout << result << endl;
+//execlp("./resources/CAQE/caqe", "--qdo" ,qd.getFile().c_str(), ">>", "sortie.qdimacs");
+
+
+
+/*
 int nargs = ep.getNumVar();
 int debutIndicesAttaque = nargs+1;
 int finIndicesAttaque = ((nargs*nargs)+nargs);
@@ -115,10 +150,11 @@ if(model.size()>0){
 	}
 }
 cout<<"fin attmodel"<<endl;
+
 AspartixParser ap = AspartixParser(clh.getOutputFile(), ep.getArgs(), attModel);
 ap.parseFile(attmap);
 cout<<"parsing de sortie"<<endl;
-
+*/
 return 0;
 
 }

@@ -103,7 +103,8 @@ am__objects_1 = ./Main.$(OBJEXT)
 am__objects_2 = ./specs/VarMapP.$(OBJEXT) ./specs/VarMapAtt.$(OBJEXT) \
 	./specs/VarMapDet.$(OBJEXT)
 am__objects_3 = ./parser/ExtensionParser.$(OBJEXT) \
-	./parser/AspartixParser.$(OBJEXT)
+	./parser/AspartixParser.$(OBJEXT) \
+	./parser/QdimacsParser.$(OBJEXT)
 am__objects_4 = ./solver/compute_formula_stable.$(OBJEXT) \
 	./solver/compute_phi_s.$(OBJEXT)
 am__objects_5 = ./utils/CommandLineHelper.$(OBJEXT)
@@ -260,7 +261,7 @@ top_srcdir = @top_srcdir@
 AM_CPPFLAGS = -g -std=c++11 -Wall -Wno-parentheses -Werror -I$(srcdir)/specs -I$(srcdir)/parser -I$(smaxIncludeDirectory) -I$(srcdir)/solver -I$(srcdir)/utils
 specsDirSources = ./specs/VarMapP.cc ./specs/VarMapAtt.cc ./specs/VarMapDet.cc
 solverDirSources = ./solver/compute_formula_stable.cc ./solver/compute_phi_s.cc
-parserDirSources = ./parser/ExtensionParser.cc ./parser/AspartixParser.cc
+parserDirSources = ./parser/ExtensionParser.cc ./parser/AspartixParser.cc ./parser/QdimacsParser.cc
 utilsDirSources = ./utils/CommandLineHelper.cc
 srcDirSources = ./Main.cc
 smaxLibDirectory = ../resources/smax/lib
@@ -373,6 +374,8 @@ parser/$(DEPDIR)/$(am__dirstamp):
 	parser/$(DEPDIR)/$(am__dirstamp)
 ./parser/AspartixParser.$(OBJEXT): parser/$(am__dirstamp) \
 	parser/$(DEPDIR)/$(am__dirstamp)
+./parser/QdimacsParser.$(OBJEXT): parser/$(am__dirstamp) \
+	parser/$(DEPDIR)/$(am__dirstamp)
 solver/$(am__dirstamp):
 	@$(MKDIR_P) ./solver
 	@: > solver/$(am__dirstamp)
@@ -410,6 +413,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Main.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./parser/$(DEPDIR)/AspartixParser.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./parser/$(DEPDIR)/ExtensionParser.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./parser/$(DEPDIR)/QdimacsParser.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./solver/$(DEPDIR)/compute_formula_stable.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./solver/$(DEPDIR)/compute_phi_s.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./specs/$(DEPDIR)/VarMapAtt.Po@am__quote@
