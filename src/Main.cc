@@ -107,10 +107,18 @@ vector<int> model;
 for (unsigned int i =0;i<model.size();i++){
 	cout<<"model["<<i<<"]"<<model[i]<<endl;
 }*/
+int max = 0;
+for(unsigned int i=0;i<test.size();i++){
+    for(unsigned int j=0;j<test[i].size();j++){
+      if (max < abs(test[i][j])){
+        max = abs(test[i][j]);
+      }
+    }
+  }
 
 QdimacsParser qd = QdimacsParser();
 
-qd.parseToFile(test, vm.nVars());
+qd.parseToFile(test, vm.nVars(), max);
 
 string command = "./resources/CAQE/caqe --qdo " + qd.getFile();
 char buffer[128];

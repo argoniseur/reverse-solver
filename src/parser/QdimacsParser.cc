@@ -4,9 +4,9 @@ QdimacsParser::QdimacsParser(){
 	temporary = "tmp.qdimacs";
 }
 
-void QdimacsParser::parseToFile(vector<vector<int>> CNF, int nargs){
+void QdimacsParser::parseToFile(vector<vector<int>> CNF, int nargs, int max){
 	ofstream file(temporary, ios::out);
-	file << "p cnf " << nargs << " " << CNF.size() << endl;
+	file << "p cnf " << max << " " << CNF.size() << endl;
 	file << "e ";
 	for(int i=nargs+1;i<=nargs*nargs+nargs;i++){
 		 file << i << " ";
@@ -18,7 +18,11 @@ void QdimacsParser::parseToFile(vector<vector<int>> CNF, int nargs){
 		 file << i << " ";
 	}
 	file << "0" << endl;
-
+	file << "e ";
+	for(int i=nargs*nargs+nargs+1;i<=max;i++){
+		 file << i << " ";
+	}
+	file << "0" << endl;
 	for(unsigned int i=0;i<CNF.size();i++){
 		for(unsigned int j=0;j<CNF[i].size();j++){
 			file << CNF[i][j] << " ";

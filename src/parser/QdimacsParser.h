@@ -14,12 +14,12 @@ class QdimacsParser {
  public:
   QdimacsParser();
 
-  void parseToFile(vector<vector<int>> CNF, int args);
+  void parseToFile(vector<vector<int>> CNF, int args, int max);
 
   void parseFromFile();
   
   string getFile();
-  
+
  private:
   string temporary;
 };
