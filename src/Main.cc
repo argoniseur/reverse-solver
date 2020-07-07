@@ -41,7 +41,7 @@ clh.parseCommandLine();
 
 
 //parsing of the extension file
-ExtensionParser ep = ExtensionParser(clh.getInstanceFile());
+ExtensionParser ep = ExtensionParser(clh.getInstanceFile(), clh.getK());
 ep.parseInstance();
 //ep.printArgs();
 

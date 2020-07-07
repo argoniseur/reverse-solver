@@ -16,7 +16,7 @@ class ExtensionParser {
 
  public:
 
-  ExtensionParser(string inputFile);
+  ExtensionParser(string inputFile, int k);
 
   void parseInstance();
 
@@ -42,6 +42,6 @@ class ExtensionParser {
   VarMapP arguments;
   string instanceFile;
   string outputFile;
-
+  int k;
 };
 #endif

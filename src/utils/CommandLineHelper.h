@@ -33,6 +33,8 @@ class CommandLineHelper {
   
   string getOutputFile();
   
+  int getK();
+  
  private:
   vector<string> args;
   bool mustExit;
@@ -40,6 +42,6 @@ class CommandLineHelper {
   string instanceFile;
   string outputFile;
   map<string,string> additionalParams;
-
+  int k;
 };
 #endif

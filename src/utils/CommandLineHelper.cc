@@ -2,10 +2,14 @@
 
 
 using namespace std;
-
+#define USAGE "Help:\n\
+-o: Output file\n\
+-f: Input file\n\
+-k: Additionnal arguments"
 CommandLineHelper::CommandLineHelper(int argc, char** argv) {
   instanceFile = "";
   outputFile = "output.apx";
+  k = 0;
   for(int i=1; i<argc; ++i) {
     args.push_back(string(argv[i]));
   }
@@ -30,6 +34,15 @@ void CommandLineHelper::parseCommandLine() {
       instanceFile = args[i];
       continue;
     }
+    if(!args[i].compare("-k")) {
+      i++;
+      k = stoi(args[i]);
+      continue;
+    }
+    if(!args[i].compare("-h")) {
+      cout << USAGE << endl;
+      exit(0);
+    }
   }
 }
 
@@ -40,3 +53,7 @@ string CommandLineHelper::getInstanceFile(){
 string CommandLineHelper::getOutputFile(){
     return outputFile;
   }
+
+int CommandLineHelper::getK(){
+  return k;
+}

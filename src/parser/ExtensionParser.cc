@@ -6,8 +6,9 @@
 #include <cctype>
 #include "ExtensionParser.h"
 
-ExtensionParser::ExtensionParser(string inputFile){
+ExtensionParser::ExtensionParser(string inputFile, int k){
 	instanceFile = inputFile;
+	this->k = k;
 }
 
 void ExtensionParser::parseInstance(){
@@ -66,6 +67,12 @@ void ExtensionParser::parseInstance(){
 	  		}
   		}
   	}
+  	string tmpAux = "aux";
+  	for(int i=0;i<k;i++){
+  		arguments.addEntry(tmpAux + to_string(i));
+  		args.push_back(tmpAux + to_string(i));
+  	}
+
   	parseExtensionsVector();
   	parseArgumentVector();
   	file.close();
