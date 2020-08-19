@@ -62,13 +62,13 @@ void ExtensionParser::parseInstance(){
 	  			}
 	  			extensions.push_back(stringAcc);
 	  			i++;
-	  		}else if((line.find("]\n") == 0)){
+	  		}else if((line.find("]\n") == 0)){ //peut-etre le pb vient de la ??
 	  			cout << "fichier fini" << endl;
 	  		}
   		}
   	}
   	string tmpAux = "aux";
-  	for(int i=0;i<k;i++){
+  	for(int i=0;i<k;i++){ //on devrait mettre ce code avant de lire le fichier des extensions (dans une fonction à part)
   		arguments.addEntry(tmpAux + to_string(i));
   		args.push_back(tmpAux + to_string(i));
   	}

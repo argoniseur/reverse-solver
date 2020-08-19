@@ -42,8 +42,14 @@ clh.parseCommandLine();
 
 //parsing of the extension file
 ExtensionParser ep = ExtensionParser(clh.getInstanceFile(), clh.getK());
+
+
+//TO DO : modifier le constructeur de ExtensionParser en enlevant le k
+// et le rajouter ici (petit bout de code qui instancie les arguments auxiliaires)
+//if clh.getK() > 0 petit bout de code de taches additionnelles 
 ep.parseInstance();
-//ep.printArgs();
+ep.printArgs();
+ep.printExtensions();
 
 //getting of the of the arguments
 VarMapP vm = ep.getArguments();
