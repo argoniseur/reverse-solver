@@ -41,12 +41,10 @@ clh.parseCommandLine();
 
 
 //parsing of the extension file
-ExtensionParser ep = ExtensionParser(clh.getInstanceFile(), clh.getK());
+ExtensionParser ep = ExtensionParser(clh.getInstanceFile());
 
 
-//TO DO : modifier le constructeur de ExtensionParser en enlevant le k
-// et le rajouter ici (petit bout de code qui instancie les arguments auxiliaires)
-//if clh.getK() > 0 petit bout de code de taches additionnelles 
+
 ep.parseInstance();
 ep.printArgs();
 ep.printExtensions();
@@ -54,12 +52,32 @@ ep.printExtensions();
 //getting of the of the arguments
 VarMapP vm = ep.getArguments();
 
+
+
+//TO DO: store in file
+vector<string> args = ep.getArgs();
+
+//ici jai la varmap des arguments et le vector de string deja rempli par les non additionnels
+
+//eventuel ajout des arguments additionnels:
+
+//TO DO : modifier le constructeur de ExtensionParser en enlevant le k //DONE
+// et le rajouter ici (petit bout de code qui instancie les arguments auxiliaires)
+//if clh.getK() > 0 petit bout de code de taches additionnelles 
+
+if (clh.getK() > 0) {
+	int k = clh.getK();
+	string tmpAux = "aux";
+  	for(int i=0;i<k;i++){ //on devrait mettre ce code avant de lire le fichier des extensions (dans une fonction à part)
+  		vm.addEntry(tmpAux + to_string(i));
+  		args.push_back(tmpAux + to_string(i));
+	}
+}
+
 //creating of the attacks and the defeated
 VarMapAtt attmap = VarMapAtt(vm);
 VarMapDet detmap = VarMapDet(vm);
 
-//TO DO: store in file
-vector<string> args = ep.getArgs();
 for (unsigned int i =0;i<args.size();i++){
 	for (unsigned int j = 0; j<args.size();j++){
 		attmap.addEntry(args[i],args[j]);

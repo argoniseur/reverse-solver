@@ -16,7 +16,7 @@ class ExtensionParser {
 
  public:
 
-  ExtensionParser(string inputFile, int k);
+  ExtensionParser(string inputFile);
 
   void parseInstance();
 

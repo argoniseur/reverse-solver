@@ -6,7 +6,7 @@
 #include <cctype>
 #include "ExtensionParser.h"
 
-ExtensionParser::ExtensionParser(string inputFile, int k){
+ExtensionParser::ExtensionParser(string inputFile){
 	instanceFile = inputFile;
 	this->k = k;
 }
@@ -66,17 +66,15 @@ void ExtensionParser::parseInstance(){
 	  			cout << "fichier fini" << endl;
 	  		}
   		}
-  	}
-  	string tmpAux = "aux";
-  	for(int i=0;i<k;i++){ //on devrait mettre ce code avant de lire le fichier des extensions (dans une fonction à part)
-  		arguments.addEntry(tmpAux + to_string(i));
-  		args.push_back(tmpAux + to_string(i));
+ 
+  	
   	}
 
   	parseExtensionsVector();
   	parseArgumentVector();
   	file.close();
 }
+
 
 void ExtensionParser::parseExtensionsVector(){
 	for(unsigned int i=0;i<extensions.size();i++){
