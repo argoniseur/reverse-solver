@@ -43,8 +43,6 @@ clh.parseCommandLine();
 //parsing of the extension file
 ExtensionParser ep = ExtensionParser(clh.getInstanceFile());
 
-
-
 ep.parseInstance();
 ep.printArgs();
 ep.printExtensions();
@@ -74,9 +72,15 @@ if (clh.getK() > 0) {
 	}
 }
 
+
 //creating of the attacks and the defeated
 VarMapAtt attmap = VarMapAtt(vm);
 VarMapDet detmap = VarMapDet(vm);
+
+//iteration sur args avant de remplir les map dattacks et de defeated
+//for (unsigned int i = 0; i<args.size();i++){
+//	cout<<args[i]<<endl;
+//}
 
 for (unsigned int i =0;i<args.size();i++){
 	for (unsigned int j = 0; j<args.size();j++){
@@ -86,9 +90,14 @@ for (unsigned int i =0;i<args.size();i++){
 }
 
 
-vector<vector<int> > atts = attmap.getAttacks();
-
-
+/*vector<vector<int> > atts = attmap.getAttacks();
+vector<vector<int> > dets = detmap.getDets();
+for (unsigned int i = 0;i<args.size();i++){
+	for (unsigned int j = 0; j<args.size();j++){
+		cout<<"att "<<args[i]<<" "<<args[j]<<" : "<<atts[i][j]<<endl;
+		cout<<"det "<<args[i]<<" "<<args[j]<<" : "<<dets[i][j]<<endl;
+	}
+}*/
 vector<vector<int> > test = phi_sigma_S(vm,attmap,detmap);
 
 //essai de remplir le solver : 
