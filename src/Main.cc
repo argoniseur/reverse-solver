@@ -138,7 +138,7 @@ vector<int> attModel = qd.parseFromFile(result);
 
 if(attModel[0] == 1){
   attModel.erase(attModel.begin());
-  AspartixParser ap = AspartixParser(clh.getOutputFile(), ep.getArgs(), attModel);
+  AspartixParser ap = AspartixParser(clh.getOutputFile(), args, attModel);
   ap.parseFile(attmap);
   cout << "Fichier généré" << endl;
 }else{
