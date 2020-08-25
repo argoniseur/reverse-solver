@@ -59,7 +59,7 @@ vector<int> QdimacsParser::parseFromFile(string sortie){
 				string number = tmpline.substr(0,spaceIndex2);
 				
 				int n = atoi(number.c_str());
-				if(n > 0 && abs(n)>nargs+1 && abs(n) < nargs*nargs+nargs){
+				if(n > 0 && abs(n)>=nargs+1 && abs(n) <= nargs*nargs+nargs){
 					ret.push_back(n);
 				}
 			}

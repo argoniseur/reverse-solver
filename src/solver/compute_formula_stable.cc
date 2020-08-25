@@ -43,7 +43,6 @@ using namespace std;
 		}
 		phi_sigma.push_back(lits);
 		lits.clear();
-		lits.push_back(a);
 	}
 	
 

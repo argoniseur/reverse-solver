@@ -4,7 +4,7 @@ using namespace std;
 
 VarMapDet::VarMapDet(VarMapP vm) {
  	this->vm = vm;
-  	nvars = (vm.nVars()*vm.nVars()) + vm.nVars();
+  	nvars = ((vm.nVars()*vm.nVars()) + vm.nVars());
 	vector<int> vect(vm.nVars(), 0);
 	for (int i = 0; i<vm.nVars();i++){
 		dets.push_back(vect);

@@ -138,7 +138,8 @@ vector<vector<int> > part2;
 
 //la DNF xsigma ou -phi_sigma est créé
 //transforming this dnf into a cnf
-int ti1 = (2*n_args*n_args + n_args +4);
+//int ti1 = (2*n_args*n_args + n_args +4);
+int ti1 = (xsigma + 1);
 vector<vector<int> > cnfPart2 = transformationTseytin(ti1, part2);
 //incorporate to the phi_sigma_S
 for(unsigned int i=0;i<cnfPart2.size();i++){
@@ -151,7 +152,7 @@ for(unsigned int i=0;i<cnfPart2.size();i++){
 //partie -xs ou phi_S (DNF)
 vector<vector<int> > part3 = phi_s;
 part3.push_back({-xs});
-int ti2 = (ti1 + part2.size() + 1);
+int ti2 = (ti1 + part2.size());
 vector<vector<int> > cnfPart3 = transformationTseytin(ti2, part3);
 for(unsigned int i=0;i<cnfPart3.size();i++){
 	phi_sigma_S.push_back(cnfPart3[i]);

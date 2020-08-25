@@ -72,6 +72,13 @@ if (clh.getK() > 0) {
 	}
 }
 
+/*vector<vector<int> > extensionss = vm.getExtensions();
+for (unsigned int i = 0; i<extensionss.size(); i++){
+	for (unsigned int j = 0; j<extensionss[i].size(); j++){
+		cout<<vm.getName(extensionss[i][j]);
+	}
+	cout<<endl;
+}*/
 
 //creating of the attacks and the defeated
 VarMapAtt attmap = VarMapAtt(vm);
