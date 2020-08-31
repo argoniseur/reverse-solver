@@ -42,6 +42,6 @@ class ExtensionParser {
   VarMapP arguments;
   string instanceFile;
   string outputFile;
-  int k;
+  //  int k;
 };
 #endif

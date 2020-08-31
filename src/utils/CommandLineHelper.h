@@ -38,7 +38,7 @@ class CommandLineHelper {
  private:
   vector<string> args;
   bool mustExit;
-  bool errorOccured;
+  //  bool errorOccured;
   string instanceFile;
   string outputFile;
   map<string,string> additionalParams;

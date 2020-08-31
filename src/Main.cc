@@ -44,8 +44,8 @@ clh.parseCommandLine();
 ExtensionParser ep = ExtensionParser(clh.getInstanceFile());
 
 ep.parseInstance();
-ep.printArgs();
-ep.printExtensions();
+//ep.printArgs();
+//ep.printExtensions();
 
 //getting of the of the arguments
 VarMapP vm = ep.getArguments();
@@ -147,9 +147,9 @@ if(attModel[0] == 1){
   attModel.erase(attModel.begin());
   AspartixParser ap = AspartixParser(clh.getOutputFile(), args, attModel);
   ap.parseFile(attmap);
-  cout << "Fichier généré" << endl;
+  cout << "DONE" << endl;
 }else{
-  cout << "Insatisfiable" << endl;
+  cout << "UNSAT" << endl;
 }
 
 remove("tmp.qdimacs");

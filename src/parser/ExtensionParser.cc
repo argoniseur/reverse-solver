@@ -8,7 +8,7 @@
 
 ExtensionParser::ExtensionParser(string inputFile){
 	instanceFile = inputFile;
-	this->k = k;
+	//	this->k = k;
 }
 
 void ExtensionParser::parseInstance(){
